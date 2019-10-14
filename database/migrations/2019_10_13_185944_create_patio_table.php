@@ -21,7 +21,8 @@ class CreatePatioTable extends Migration
             $table->String('obs');
             $table->String('vaga');
             $table->double('valor', 8, 2);
-            $table->integer('mensalista')->index('fk_mensalista');
+            $table->integer('id_tipo_veiculo')->index('fk_tipo_veiculo');
+            $table->integer('id_mensalista')->index('fk_mensalista');
             $table->softDeletes();  
             $table->timestamps();
         });
