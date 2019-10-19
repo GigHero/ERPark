@@ -19,7 +19,7 @@ class CreatePlanoTable extends Migration
             $table->date('data_inicio');
             $table->date('data_fim');
             $table->double('valor', 8, 2);
-            $table->integer('mensalista')->index('fk_mensalista');
+            $table->integer('mensalista_id')->index('fk_mensalista');
             $table->timestamps();
         });
     }
