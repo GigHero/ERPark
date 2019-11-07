@@ -17,7 +17,7 @@ class CreateMensalistaTable extends Migration
             $table->bigIncrements('id');
             $table->String('nome');
             $table->String('email');
-            $table->Integer('cpf');
+            $table->String('cpf');
             $table->String('telefone');
             $table->softDeletes();
             $table->timestamps();

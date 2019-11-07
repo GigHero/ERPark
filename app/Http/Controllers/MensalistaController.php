@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\{Mensalista};
+use App\Http\Requests\MensalistaRequest;
+use DB;
 
 class MensalistaController extends Controller
 {
@@ -13,7 +16,11 @@ class MensalistaController extends Controller
      */
     public function index()
     {
-        //
+        $mensalista = Mensalista::get();
+        $data = [
+            'mensalista' => $mensalista
+        ];
+        return view('mensalistas.index', compact('data'));
     }
 
     /**
@@ -23,7 +30,12 @@ class MensalistaController extends Controller
      */
     public function create()
     {
-        //
+        $data = [
+            'mensalista' => '',
+            'url' => 'mensalistas',
+            'method' => 'POST',
+        ];
+        return view('mensalistas.form', compact('data'));
     }
 
     /**
@@ -34,7 +46,21 @@ class MensalistaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        DB::beginTransaction();
+        try {
+            $mensalista = Mensalista::create([
+                'nome' => $request['mensalista']['nome'],
+                'email' => $request['mensalista']['email'],
+                'cpf' => $request['mensalista']['cpf'],
+                'telefone' => $request['mensalista']['telefone']
+            ]);
+            DB::commit();
+            return redirect('mensalistas')->with('success', 'Mensalista cadastrado com sucesso!');
+        }
+        catch(\Exception $e) {
+            DB::rollback();
+            return redirect('mensalistas')->with('error', 'Erro no servidor! Mensalista não cadastrado!');
+        }
     }
 
     /**
@@ -45,7 +71,7 @@ class MensalistaController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -56,7 +82,14 @@ class MensalistaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $mensalista = Mensalista::findOrFail($id);
+        $data = [
+           'mensalista' => $mensalista,
+           'url' => 'mensalistas/'.$id,
+           'method' => 'PUT',
+        ];
+        
+        return view('mensalistas.form', compact('data'));
     }
 
     /**
@@ -68,7 +101,25 @@ class MensalistaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $mensalista = Mensalista::findOrFail($id);
+        
+        DB::beginTransaction();
+
+         try {
+             $mensalista->update([
+                'nome' => $request['mensalista']['nome'],
+                'email' => $request['mensalista']['email'],
+                'cpf' => $request['mensalista']['cpf'],
+                'telefone' => $request['mensalista']['telefone']
+             ]);
+             DB::commit();
+             return redirect('mensalistas')->with('success', 'mensalista cadastrado com sucesso!');
+         }
+         catch(\Exception $e) {
+             DB::rollback();
+             return redirect('mensalistas')->with('error', 'Erro no servidor! mensalista não cadastrado!');
+         }
+    
     }
 
     /**
@@ -79,6 +130,13 @@ class MensalistaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $mensalista = Mensalista::withTrashed()->findOrFail($id);
+        if($mensalista->trashed()) {
+           $mensalista->restore();
+           return redirect('mensalistas')->with('success', 'Mensalista ativado com sucesso!');
+        } else {
+           $mensalista->delete();
+           return redirect('mensalistas')->with('success', 'Mensalista desativado com sucesso!');
+        }
     }
 }

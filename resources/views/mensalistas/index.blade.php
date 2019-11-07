@@ -1,26 +1,28 @@
 @extends('layouts.app')
 @section('content')
 <div class="card">
-    <div class="card-header">Produtos</div>
+    <div class="card-header">Mensalista</div>
         <div class="card-body">
             <div class="row pb-3 pl-3">
-                <a class="btn btn-success" href="{{url('produtos/create')}}">Criar Produtos</a>
-            </div>
+                <a class="btn btn-success" href="{{url('mensalistas/create')}}">Criar Mensalista</a>
+            </div> 
             <div class="row">
                 <table class="table">
                     <thead>
                         <tr>
                             <th>Nome</th>
-                            <th colspan='3'>Ações</th>
+                            <th>E-mail</th>
+                            <th colspan='3'class="text-center">Ações</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($produtos as $produto)
+                    @foreach($data['mensalista'] as $mensalista)
                             <tr>
-                                <td>{{$produto->nome}}</td>
-                                <td><a href="{{url('produtos/'.$produto->id.'/edit')}}" class="btn btn-warning">Editar</td>
-                                <td>
-                                    <form action="{{url('produtos/'.$produto->id)}}" method="POST">
+                                <td>{{$mensalista->nome}}</td>
+                                <td>{{$mensalista->email}}</td>
+                                <td class="text-center"><a href="{{url('mensalistas/'.$mensalista->id.'/edit')}}" class="btn btn-warning">Editar</td>
+                                <td class="text-center">
+                                    <form action="{{url('mensalistas/'.$mensalista->id)}}" method="POST">
                                         {{method_field('DELETE')}}
                                         {{ csrf_field() }}
                                             <input type="submit" class="btn btn-danger" value="Desativar"/>

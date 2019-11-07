@@ -11,12 +11,12 @@
                 @endif
                 @csrf
                 <div class="form-group">
-                    <label for="nomeTaxa">Nome</label>
+                    <label for="Nome">Nome</label>
                     <input type="text" name="taxa[nome]" class="form-control" value="{{old('taxa.nome', $data['taxa'] ? $data['taxa']->nome : '')}}">
                     <span>{{$errors->first('taxa.nome')}}</span>
                 </div>
                 <div class="form-group">
-                    <label for="nomeTaxa">Valor</label>
+                    <label for="Valor">Valor</label>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text">$</span>

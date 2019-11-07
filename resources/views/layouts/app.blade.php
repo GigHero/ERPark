@@ -29,7 +29,7 @@
                 <a class="nav-link" href="{{url('taxas')}}">Taxas</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{url('produtos')}}">Mensalista</a>
+                <a class="nav-link" href="{{url('mensalistas')}}">Mensalista</a>
             </li>
         </div>
     </nav>
