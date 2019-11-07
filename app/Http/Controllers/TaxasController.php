@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\{Taxas};
+use App\Http\Requests\TaxasRequest;
+use DB;
 
 class TaxasController extends Controller
 {
@@ -13,17 +16,23 @@ class TaxasController extends Controller
      */
     public function index()
     {
-        //
+        $taxas = Taxas::get();
+        return view('taxas.index', compact('taxas'));
     }
 
     /**
      * Show the form for creating a new resource.
-     *
+     * Não é utilizado em 
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        //
+        $data = [
+            'taxa' => '',
+            'url' => 'taxas',
+            'method' => 'POST',
+        ];
+        return view('taxas.form', compact('data'));
     }
 
     /**
@@ -34,7 +43,19 @@ class TaxasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        DB::beginTransaction();
+        try {
+            $taxa = Taxas::create([
+                'nome' => $request['taxa']['nome'],
+                'valor' => $request['taxa']['valor']
+            ]);
+            DB::commit();
+            return redirect('taxas')->with('success', 'Taxa cadastrado com sucesso!');
+        }
+        catch(\Exception $e) {
+            DB::rollback();
+            return redirect('taxas')->with('error', 'Erro no servidor! Taxa não cadastrado!');
+        }
     }
 
     /**
@@ -56,7 +77,14 @@ class TaxasController extends Controller
      */
     public function edit($id)
     {
-        //
+        $taxa = Taxas::findOrFail($id);
+        $data = [
+           'taxa' => $taxa,
+           'url' => 'taxas/'.$id,
+           'method' => 'PUT',
+        ];
+
+       return view('taxas.form', compact('data'));
     }
 
     /**
@@ -68,7 +96,23 @@ class TaxasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $taxa = Taxas::findOrFail($id);
+        
+        DB::beginTransaction();
+
+         try {
+             $taxa->update([
+                 'nome' => $request['taxa']['nome'],
+                 'valor' => $request['taxa']['valor']
+             ]);
+             DB::commit();
+             return redirect('taxas')->with('success', 'taxa cadastrado com sucesso!');
+         }
+         catch(\Exception $e) {
+             DB::rollback();
+             return redirect('taxas')->with('error', 'Erro no servidor! taxa não cadastrado!');
+         }
+    
     }
 
     /**
@@ -79,6 +123,13 @@ class TaxasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $taxa = Taxas::withTrashed()->findOrFail($id);
+       if($taxa->trashed()) {
+           $taxa->restore();
+           return redirect('taxas')->with('success', 'taxa ativado com sucesso!');
+       } else {
+           $taxa->delete();
+           return redirect('taxas')->with('success', 'taxa desativado com sucesso!');
+        }
     }
 }

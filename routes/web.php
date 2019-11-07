@@ -11,6 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
+
+Route::prefix('taxas')->group(function() {
+    Route::get('/', 'TaxasController@index');
+    Route::get('create', 'TaxasController@create');
+    Route::post('/', 'TaxasController@store');
+    Route::get('{id}/edit', 'TaxasController@edit');
+    Route::put('{id}', 'TaxasController@update');
+    Route::delete('{id}', 'TaxasController@destroy');
 });
