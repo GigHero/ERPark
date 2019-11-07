@@ -28,6 +28,7 @@
                                             <input type="submit" class="btn btn-danger" value="Desativar"/>
                                     </form>
                                 </td>
+                                <td class="text-center"><a href="{{url('planos/'.$mensalista->id.'/')}}" class="btn btn-info">Planos</td>
                             </tr>
                         @endforeach
                     </tbody>

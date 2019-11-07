@@ -13,7 +13,9 @@ class Mensalista extends Model
     protected $fillable = ['nome','email','cpf','telefone'];
     
     //Relacionamentos
-    
+    public function planos(){
+        return $this->belongsTo('App\Plano');
+    }    
 
 
 }

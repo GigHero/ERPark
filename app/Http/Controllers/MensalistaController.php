@@ -111,6 +111,7 @@ class MensalistaController extends Controller
                 'email' => $request['mensalista']['email'],
                 'cpf' => $request['mensalista']['cpf'],
                 'telefone' => $request['mensalista']['telefone']
+                
              ]);
              DB::commit();
              return redirect('mensalistas')->with('success', 'mensalista cadastrado com sucesso!');
