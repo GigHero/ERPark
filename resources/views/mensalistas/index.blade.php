@@ -16,7 +16,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                    @foreach($data['mensalista'] as $mensalista)
+                    @foreach($data['mensalistas'] as $mensalista)
                             <tr>
                                 <td>{{$mensalista->nome}}</td>
                                 <td>{{$mensalista->email}}</td>

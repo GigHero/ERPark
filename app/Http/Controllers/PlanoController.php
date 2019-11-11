@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\{Mensalista, Plano, Taxas};
+use App\Http\Requests\MensalistaRequest;
+use DB;
 
 class PlanoController extends Controller
 {
@@ -13,7 +16,12 @@ class PlanoController extends Controller
      */
     public function index()
     {
-        //
+        $mensalistas = Mensalista::get();
+        $data = [
+            'mensalistas' => $mensalistas
+        ];
+    
+        return view('planos.index', compact('data'));
     }
 
     /**
@@ -23,7 +31,12 @@ class PlanoController extends Controller
      */
     public function create()
     {
-        //
+        $data = [
+            'plano' => '',
+            'url' => 'plano',
+            'method' => 'POST'
+        ];
+        return view('planos.form', compact('data'));
     }
 
     /**

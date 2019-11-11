@@ -29,3 +29,12 @@ Route::prefix('mensalistas')->group(function() {
     Route::put('{id}', 'MensalistaController@update');
     Route::delete('{id}', 'MensalistaController@destroy');
 });
+
+Route::prefix('planos')->group(function() {
+    Route::get('/', 'PlanoController@index');
+    Route::get('create', 'PlanoController@create');
+    Route::post('/', 'PlanoController@store');
+    Route::get('{id}/edit', 'PlanoController@edit');
+    Route::put('{id}', 'PlanoController@update');
+    Route::delete('{id}', 'PlanoController@destroy');
+});

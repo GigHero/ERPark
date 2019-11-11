@@ -16,10 +16,11 @@ class MensalistaController extends Controller
      */
     public function index()
     {
-        $mensalista = Mensalista::get();
+        $mensalistas = Mensalista::get();
         $data = [
-            'mensalista' => $mensalista
+            'mensalistas' => $mensalistas
         ];
+    
         return view('mensalistas.index', compact('data'));
     }
 
