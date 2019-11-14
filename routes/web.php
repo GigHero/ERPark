@@ -38,3 +38,12 @@ Route::prefix('planos')->group(function() {
     Route::put('{id}', 'PlanoController@update');
     Route::delete('{id}', 'PlanoController@destroy');
 });
+
+Route::prefix('patios')->group(function() {
+    Route::get('/', 'PatioController@index');
+    Route::get('create', 'PatioController@create');
+    Route::post('/', 'PatioController@store');
+    Route::get('{id}/edit', 'PatioController@edit');
+    Route::put('{id}', 'PatioController@update');
+    Route::delete('{id}', 'PatioController@destroy');
+});

@@ -12,30 +12,35 @@
                 @csrf
 
                 <div class="form-group">
-                    <label for="nome">Nome</label>
-                    <input type="text" name="mensalista[nome]" class="form-control" placeholder="Rogério" value="{{old('mensalista.nome', $data['mensalista'] ? $data['mensalista']->nome : '')}}">
-                    <span>{{$errors->first('mensalista.nome')}}</span>
+                    <label for="nome">Data de Inicio</label>
+                    <input type="text" name="plano[data_ini]" class="form-control" placeholder="04/10/2019" value="{{old('plano.data_ini', $data['plano'] ? $data['plano']->data_ini : '')}}">
+                    <span>{{$errors->first('plano.data_ini')}}</span>
                 </div>
 
                 <div class="form-group">
-                    <label for="CPF">CPF</label>
-                    <input type="text" name="mensalista[cpf]" class="form-control" placeholder="7x4.x46.x50-4x" value="{{old('mensalista.cpf', $data['mensalista'] ? $data['mensalista']->cpf : '')}}">
-                    <span>{{$errors->first('mensalista.cpf')}}</span>
+                    <label for="nome">Data de Fim</label>
+                    <input type="text" name="plano[data_fim]" class="form-control" placeholder="05/11/2019" value="{{old('plano.data_fim', $data['plano'] ? $data['plano']->data_fim : '')}}">
+                    <span>{{$errors->first('plano.data_fim')}}</span>
                 </div>
 
                 <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" name="mensalista[email]" class="form-control" placeholder="name@example.com" value="{{old('mensalista.email', $data['mensalista'] ? $data['mensalista']->email : '')}}">
-                    <span>{{$errors->first('mensalista.email')}}</span>
+                    <label for="nome">Valor</label>
+                    <input type="number" name="plano[valor]" class="form-control" placeholder="15.63" value="{{old('plano.valor', $data['plano'] ? $data['plano']->valor : '')}}">
+                    <span>{{$errors->first('plano.valor')}}</span>
                 </div>
-
+                
                 <div class="form-group">
-                    <label for="Telefone">Telefone</label>
-                    <input type="text" name="mensalista[telefone]" class="form-control" placeholder="12 99xxx- xx89" value="{{old('mensalista.telefone', $data['mensalista'] ? $data['mensalista']->telefone : '')}}">
-                    <span>{{$errors->first('mensalista.telefone')}}</span>
+                    <label for="nome">Mensalista</label>
+                    <div class="input-group">
+                        <select class="custom-select" name="plano[mensalista_id]" id="form-control" aria-label="Example select with button addon">
+                        @foreach($data['mensalistas'] as $mensalista)
+                        <option value="{{$mensalista->id}}">{{$mensalista->nome}}</option>
+                        @endforeach
+                        </select>
+                    </div>
                 </div>
 
-                <input type="submit" value="{{$data['mensalista'] ? 'Atualizar' : 'Salvar'}}" class="btn btn-success">
+                <input type="submit" value="{{$data['plano'] ? 'Atualizar' : 'Salvar'}}" class="btn btn-success">
             </form>
            
         </div>

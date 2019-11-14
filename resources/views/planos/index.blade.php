@@ -4,7 +4,7 @@
     <div class="card-header">Planos</div>
         <div class="card-body">     
                     <div class="row pb-3 pl-3">
-                        <a class="btn btn-success" href="{{url('planos/create')}}">Criar Mensalista</a>
+                        <a class="btn btn-success" href="{{url('planos/create')}}">Criar Plano</a>
                     </div> 
             <div class="row pb-3 pl-3 d-flex justify-content-center">
                 <div class="input-group mb-3 col-6">
@@ -21,6 +21,7 @@
                         <tr>
                             <th><h5>ID</h5></th>
                             <th><h5>NOME</h5></th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>

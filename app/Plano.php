@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 class Plano extends Model
 {
@@ -10,7 +12,7 @@ class Plano extends Model
     use SoftDeletes;
 
     protected $table = 'plano';
-    protected $fillable = ['pagamento','data_inicio','data_fim','valor','mensalista_id'];
+    protected $fillable = ['data_inicio','data_fim','valor','mensalista_id'];
 
         
     // Relacionamento
