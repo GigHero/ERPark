@@ -31,9 +31,9 @@
                                 <td>{{$mensalista->email}}</td>
                                 
                                 <td class="text-center">
-                                    <form action="{{url('planos/create')}}" method="POST">
+                                    <form action="{{url('planos/'.$mensalista->id.'/')}}" method="POST">
                                         <input type="hidden" name="mensalista[id]" value="{{$mensalista->id}}">
-                                        <input type="submit" class="btn btn-info" value="Criar Plano"/>
+                                        <input type="submit" class="btn btn-info" value="Ver Planos"/>
                                     </form>
                                 </td>
                             </tr>

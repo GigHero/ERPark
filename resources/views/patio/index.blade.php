@@ -1,10 +1,10 @@
 @extends('layouts.app')
 @section('content')
 <div class="card">
-    <div class="card-header">Mensalista</div>
+    <div class="card-header">Patio</div>
         <div class="card-body">
             <div class="row pb-3 pl-3">
-                <a class="btn btn-success" href="{{url('mensalistas/create')}}">Criar Mensalista</a>
+                <a class="btn btn-success" href="{{url('patio/create')}}">Nova Entrada</a>
             </div> 
             <div class="row">
                 <table class="table">

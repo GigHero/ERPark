@@ -29,7 +29,12 @@ class PatioController extends Controller
      */
     public function create()
     {
-        //
+        $data = [
+            'patio' => '',
+            'url' => 'patio',
+            'method' => 'POST'
+        ];
+        return view('patio.form', compact('data'));
     }
 
     /**

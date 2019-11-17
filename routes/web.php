@@ -34,12 +34,13 @@ Route::prefix('planos')->group(function() {
     Route::get('/', 'PlanoController@index');
     Route::get('create', 'PlanoController@create');
     Route::post('/', 'PlanoController@store');
+    Route::get('{id}/', 'PlanoController@show');
     Route::get('{id}/edit', 'PlanoController@edit');
     Route::put('{id}', 'PlanoController@update');
     Route::delete('{id}', 'PlanoController@destroy');
 });
 
-Route::prefix('patios')->group(function() {
+Route::prefix('patio')->group(function() {
     Route::get('/', 'PatioController@index');
     Route::get('create', 'PatioController@create');
     Route::post('/', 'PatioController@store');

@@ -51,12 +51,14 @@ class PlanoController extends Controller
     {
         DB::beginTransaction();
         try {
+            
             $plano = Plano::create([
                 'data_inicio' => $request['plano']['data_ini'],
                 'data_fim' => $request['plano']['data_fim'],
                 'valor' => $request['plano']['valor'],
                 'mensalista_id' => $request['plano']['mensalista_id']
             ]);
+
             DB::commit();
             return redirect('planos')->with('success', 'Planos cadastrado com sucesso!');
         }
@@ -74,7 +76,7 @@ class PlanoController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
