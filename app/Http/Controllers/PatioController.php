@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\{Patio, Taxas};
+use App\Http\Requests\PatioRequest;
+use DB;
+use Carbon\Carbon;
 
 class PatioController extends Controller
 {
@@ -14,9 +18,11 @@ class PatioController extends Controller
     public function index()
     {
 
-        
+        $hora = Carbon::now('America/Sao_Paulo');
+        $carros = Patio::get();
         $data = [
-        
+            'hora' => $hora,
+            'carros' => $carros
         ];
     
         return view('patio.index', compact('data'));
@@ -29,7 +35,9 @@ class PatioController extends Controller
      */
     public function create()
     {
+        $taxas = Taxas::get();
         $data = [
+            'taxas' => $taxas,
             'patio' => '',
             'url' => 'patio',
             'method' => 'POST'
@@ -45,7 +53,21 @@ class PatioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        DB::beginTransaction();
+        try {
+            $patio = Patio::create([
+                'entrada' => $request['patio']['entrada'],
+                'placa' => $request['patio']['placa'],
+                'obs' => $request['patio']['obs'],
+                'vaga' => $request['patio']['vaga']
+            ]);
+            DB::commit();
+            return redirect('patio')->with('success', 'Carro cadastrado com sucesso!');
+        }
+        catch(\Exception $e) {
+            DB::rollback();
+            return redirect('patio')->with('error', 'Erro no servidor! Carro não cadastrado!');
+        }
     }
 
     /**
@@ -79,7 +101,7 @@ class PatioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
     }
 
     /**

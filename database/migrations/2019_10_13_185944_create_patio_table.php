@@ -15,14 +15,14 @@ class CreatePatioTable extends Migration
     {
         Schema::create('patio', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->date('entrada');
-            $table->date('saida');
+            $table->String('entrada');
+            $table->String('saida')->nullable();
             $table->String('placa');
             $table->String('obs');
             $table->String('vaga');
-            $table->double('valor', 8, 2);
-            $table->integer('tipo_veiculo_id')->index('fk_tipo_veiculo');
-            $table->integer('mensalista_id')->index('fk_mensalista');
+            $table->double('valor', 8, 2)->nullable();
+            $table->integer('taxa_id')->index('fk_taxa')->nullable();
+            $table->integer('mensalista_id')->index('fk_mensalista')->nullable();
             $table->softDeletes();  
             $table->timestamps();
         });

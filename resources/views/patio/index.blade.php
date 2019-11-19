@@ -10,13 +10,27 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Nome</th>
-                            <th>E-mail</th>
+                            <th>Horario de entrada</th>
+                            <th>{{$data['hora']}}</th>
+                            <th>Vaga</th>
                             <th colspan='3'class="text-center">Ações</th>
                         </tr>
                     </thead>
                     <tbody>
-            
+                        @foreach($data['carros'] as $carro)
+                        <tr>
+                            <td>{{$carro->entrada}}</td>
+                            <td>{{$carro->placa}}</td>
+                            <td>{{$carro->vaga}}</td>
+                            <td class="text-center">
+                                <form action="{{url('patio/'.$carro->id)}}" method="POST">
+                                    @method('PUT')
+                                    @csrf
+                                    <input type="submit" class="btn btn-danger" value="Saida"/>
+                                </form>
+                            </td>
+                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

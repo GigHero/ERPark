@@ -12,24 +12,40 @@
                 @csrf
 
                 <div class="form-group">
-                    <label for="nome">Data de Inicio</label>
-                    <input type="text" name="patio[data_ini]" class="form-control" placeholder="04/10/2019" value="{{old('patio.data_ini', $data['patio'] ? $data['patio']->data_ini : '')}}">
-                    <span>{{$errors->first('patio.data_ini')}}</span>
+                    <label for="nome">Entrada</label>
+                    <input type="text" name="patio[entrada]" class="form-control" placeholder="04/10/2019" value="{{old('patio.entrada', $data['patio'] ? $data['patio']->entrada : '')}}">
+                    <span>{{$errors->first('patio.entrada')}}</span>
                 </div>
 
                 <div class="form-group">
-                    <label for="nome">Data de Fim</label>
-                    <input type="text" name="patio[data_fim]" class="form-control" placeholder="05/11/2019" value="{{old('patio.data_fim', $data['patio'] ? $data['patio']->data_fim : '')}}">
-                    <span>{{$errors->first('patio.data_fim')}}</span>
+                    <label for="nome">Placa</label>
+                    <input type="text" name="patio[placa]" class="form-control" placeh - 191" value="{{old('patio.placa', $data['patio'] ? $data['patio']->placa : '')}}">
+                    <span>{{$errors->first('patio.placa')}}</span>
                 </div>
 
                 <div class="form-group">
-                    <label for="nome">Valor</label>
-                    <input type="number" name="patio[valor]" class="form-control" placeholder="15.63" value="{{old('patio.valor', $data['patio'] ? $data['patio']->valor : '')}}">
-                    <span>{{$errors->first('patio.valor')}}</span>
+                    <label for="nome">Observação</label>
+                    <input type="text" name="patio[obs]" class="form-control" placeholder="Avaria na traseira" value="{{old('patio.obs', $data['patio'] ? $data['patio']->obs : '')}}">
+                    <span>{{$errors->first('patio.obs')}}</span>
+                </div>  
+
+                <div class="form-group">
+                    <label for="nome">Vaga</label>
+                    <input type="text" name="patio[vaga]" class="form-control" placeholder="04/10/2019" value="{{old('patio.vaga', $data['patio'] ? $data['patio']->vaga : '')}}">
+                    <span>{{$errors->first('patio.vaga')}}</span>
                 </div>
 
-                
+                <div class="form-group">
+                    <label for="nome">Tipo De Taxa</label>
+                    <div class="input-group">
+                        <select class="custom-select" name="patio[taxa_id]" id="form-control">
+                        @foreach($data['taxas'] as $taxa)
+                        <option value="{{$taxa->id}}">{{$taxa->nome}}</option>
+                        @endforeach
+                        </select>
+                    </div>
+                </div>
+
                 <input type="submit" value="{{$data['patio'] ? 'Atualizar' : 'Salvar'}}" class="btn btn-success">
             </form>
            

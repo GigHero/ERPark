@@ -26,7 +26,7 @@
         <div class="collapse navbar-collapse" id="navbarToggler">
             <ul class="navbar-nav mt-2 mt-lg-0 ml-auto">
             <li class="nav-item">
-                <a class="nav-link" href="{{url('patios')}}">Entrada de Carros</a>
+                <a class="nav-link" href="{{url('patio')}}">Entrada de Carros</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{url('planos')}}">Planos</a>
