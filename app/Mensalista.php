@@ -14,7 +14,7 @@ class Mensalista extends Model
     
     //Relacionamentos
     public function planos(){
-        return $this->belongsTo('App\Plano');
+        return $this->hasOne('App\Plano');
     }    
 
 

@@ -106,11 +106,11 @@ class TaxasController extends Controller
                  'valor' => $request['taxa']['valor']
              ]);
              DB::commit();
-             return redirect('taxas')->with('success', 'taxa cadastrado com sucesso!');
+             return redirect('taxas')->with('success', 'Taxa Alterada com sucesso!');
          }
          catch(\Exception $e) {
              DB::rollback();
-             return redirect('taxas')->with('error', 'Erro no servidor! taxa não cadastrado!');
+             return redirect('taxas')->with('error', 'Erro no servidor! Taxa não alterada!');
          }
     
     }
@@ -126,10 +126,10 @@ class TaxasController extends Controller
         $taxa = Taxas::withTrashed()->findOrFail($id);
        if($taxa->trashed()) {
            $taxa->restore();
-           return redirect('taxas')->with('success', 'taxa ativado com sucesso!');
+           return redirect('taxas')->with('success', 'Taxa ativado com sucesso!');
        } else {
            $taxa->delete();
-           return redirect('taxas')->with('success', 'taxa desativado com sucesso!');
+           return redirect('taxas')->with('success', 'Taxa desativado com sucesso!');
         }
     }
 }

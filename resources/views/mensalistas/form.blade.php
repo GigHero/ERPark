@@ -34,7 +34,7 @@
                     <input type="text" name="mensalista[telefone]" class="form-control" placeholder="12 99xxx- xx89" value="{{old('mensalista.telefone', $data['mensalista'] ? $data['mensalista']->telefone : '')}}">
                     <span>{{$errors->first('mensalista.telefone')}}</span>
                 </div>
-
+                
                 <input type="submit" value="{{$data['mensalista'] ? 'Atualizar' : 'Salvar'}}" class="btn btn-success">
             </form>
            

@@ -24,9 +24,14 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="nome">Valor</label>
-                    <input type="number" name="plano[valor]" class="form-control" placeholder="15.63" value="{{old('plano.valor', $data['plano'] ? $data['plano']->valor : '')}}">
-                    <span>{{$errors->first('plano.valor')}}</span>
+                    <label for="nome">Tipo De Taxa</label>
+                    <div class="input-group">
+                        <select class="custom-select" name="plano[taxa_id]" id="form-control">
+                        @foreach($data['taxas'] as $taxa)
+                        <option value="{{$taxa->id}}">{{$taxa->nome}}</option>
+                        @endforeach
+                        </select>
+                    </div>
                 </div>
                 
                 <div class="form-group">

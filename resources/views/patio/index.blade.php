@@ -11,25 +11,31 @@
                     <thead>
                         <tr>
                             <th>Horario de entrada</th>
-                            <th>{{$data['hora']}}</th>
+                            <th>Horario de Saida</th>
+                            <th>Valor</th>
+                            <th>Placa</th>
                             <th>Vaga</th>
                             <th colspan='3'class="text-center">Ações</th>
                         </tr>
                     </thead>
                     <tbody>
+                        
                         @foreach($data['carros'] as $carro)
                         <tr>
                             <td>{{$carro->entrada}}</td>
+                            <td>{{$carro->saida}}</td>
+                            <td>{{$carro->getValor()}}</td>
                             <td>{{$carro->placa}}</td>
                             <td>{{$carro->vaga}}</td>
                             <td class="text-center">
                                 <form action="{{url('patio/'.$carro->id)}}" method="POST">
                                     @method('PUT')
                                     @csrf
-                                    <input type="submit" class="btn btn-danger" value="Saida"/>
+                                    <input type="submit" class="btn btn-danger" value="Saida" {{ $carro->getValor() ? 'disabled' : ' ' }}/>
                                 </form>
                             </td>
                         </tr>
+                        
                         @endforeach
                     </tbody>
                 </table>

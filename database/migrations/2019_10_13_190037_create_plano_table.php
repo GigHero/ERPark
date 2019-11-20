@@ -17,7 +17,7 @@ class CreatePlanoTable extends Migration
             $table->bigIncrements('id');
             $table->String('data_inicio');
             $table->String('data_fim');
-            $table->double('valor', 8, 2);
+            $table->integer('taxa_id')->index('fk_taxa')->nullable();
             $table->integer('mensalista_id')->index('fk_mensalista');
             $table->timestamps();
         });

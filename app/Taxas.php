@@ -11,4 +11,10 @@ class Taxas extends Model
 
     protected $table = 'taxas';
     protected $fillable = ['nome','valor'];
+
+    public function taxa() {
+        return $this->hasOne('App\Patio');
+    }
+
+
 }

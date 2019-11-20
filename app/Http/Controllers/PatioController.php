@@ -18,10 +18,8 @@ class PatioController extends Controller
     public function index()
     {
 
-        $hora = Carbon::now('America/Sao_Paulo');
         $carros = Patio::get();
         $data = [
-            'hora' => $hora,
             'carros' => $carros
         ];
     
@@ -35,9 +33,7 @@ class PatioController extends Controller
      */
     public function create()
     {
-        $taxas = Taxas::get();
         $data = [
-            'taxas' => $taxas,
             'patio' => '',
             'url' => 'patio',
             'method' => 'POST'
@@ -56,10 +52,11 @@ class PatioController extends Controller
         DB::beginTransaction();
         try {
             $patio = Patio::create([
-                'entrada' => $request['patio']['entrada'],
+                'entrada' => Carbon::now('America/Sao_Paulo'),
                 'placa' => $request['patio']['placa'],
                 'obs' => $request['patio']['obs'],
-                'vaga' => $request['patio']['vaga']
+                'vaga' => $request['patio']['vaga'],
+                'taxa_id' =>$request['patio']['taxa_id']
             ]);
             DB::commit();
             return redirect('patio')->with('success', 'Carro cadastrado com sucesso!');
@@ -101,7 +98,27 @@ class PatioController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $carro = Patio::findOrFail($id);
         
+        DB::beginTransaction();
+         try {
+
+            if(!$carro->saida){
+                $carro->update([
+                'saida' => Carbon::now('America/Sao_Paulo')
+             ]);
+            }
+            else{
+                return redirect('patio')->with('error', 'Erro Operação invalida!');
+            }
+
+             DB::commit();
+             return redirect('patio')->with('success', 'mensalista cadastrado com sucesso!');
+         }
+         catch(\Exception $e) {
+             DB::rollback();
+             return redirect('patio')->with('error', 'Erro no servidor! mensalista não cadastrado!');
+         }
     }
 
     /**

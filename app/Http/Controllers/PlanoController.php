@@ -32,7 +32,9 @@ class PlanoController extends Controller
     public function create()
     {
         $mensalistas = Mensalista::get();
+        $taxas = Taxas::get();
         $data = [
+            'taxas' => $taxas,
             'plano' => '',
             'url' => 'planos',
             'mensalistas' => $mensalistas,
@@ -56,6 +58,7 @@ class PlanoController extends Controller
                 'data_inicio' => $request['plano']['data_ini'],
                 'data_fim' => $request['plano']['data_fim'],
                 'valor' => $request['plano']['valor'],
+                'taxa_id' =>$request['mensalista']['taxa_id'],
                 'mensalista_id' => $request['plano']['mensalista_id']
             ]);
 
