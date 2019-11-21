@@ -31,9 +31,7 @@ class MensalistaController extends Controller
      */
     public function create()
     {
-        $taxas = Taxas::get();
         $data = [
-            'taxas' => $taxas,
             'mensalista' => '',
             'url' => 'mensalistas',
             'method' => 'POST',
@@ -116,8 +114,7 @@ class MensalistaController extends Controller
                 'nome' => $request['mensalista']['nome'],
                 'email' => $request['mensalista']['email'],
                 'cpf' => $request['mensalista']['cpf'],
-                'telefone' => $request['mensalista']['telefone']
-                
+                'telefone' => $request['mensalista']['telefone']              
              ]);
              DB::commit();
              return redirect('mensalistas')->with('success', 'mensalista cadastrado com sucesso!');

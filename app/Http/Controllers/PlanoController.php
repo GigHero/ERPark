@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\{Mensalista, Plano, Taxas};
 use App\Http\Requests\MensalistaRequest;
 use DB;
+use Carbon\Carbon;
 
 class PlanoController extends Controller
 {
@@ -24,7 +25,7 @@ class PlanoController extends Controller
         return view('planos.index', compact('data'));
     }
 
-    /**
+    /*
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -52,13 +53,16 @@ class PlanoController extends Controller
     public function store(Request $request)
     {
         DB::beginTransaction();
+        
+        $inicio = $request['plano']['data_ini'];
+        $fim = $request['plano']['data_fim'];
+
         try {
             
             $plano = Plano::create([
-                'data_inicio' => $request['plano']['data_ini'],
-                'data_fim' => $request['plano']['data_fim'],
-                'valor' => $request['plano']['valor'],
-                'taxa_id' =>$request['mensalista']['taxa_id'],
+                'data_inicio' => Carbon::createFromFormat('Y-m-d',$inicio),
+                'data_fim' => Carbon::createFromFormat('Y-m-d',$fim),
+                'taxa_id' => $request['plano']['taxa_id'],
                 'mensalista_id' => $request['plano']['mensalista_id']
             ]);
 
@@ -67,7 +71,7 @@ class PlanoController extends Controller
         }
         catch(\Exception $e) {
             DB::rollback();
-            return redirect('planos')->with('error', 'Erro no servidor! Planos não cadastrado!');
+            return $e;
         }
     }
 
@@ -79,7 +83,15 @@ class PlanoController extends Controller
      */
     public function show($id)
     {
-        
+
+        $planos = DB::table('plano')->where('mensalista_id', '=', $id)->get();
+
+        $data = [
+            'planos' => $planos
+        ];
+  
+        return view('planos.show', compact('data'));
+
     }
 
     /**

@@ -15,8 +15,8 @@ class CreatePlanoTable extends Migration
     {
         Schema::create('plano', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->String('data_inicio');
-            $table->String('data_fim');
+            $table->date('data_inicio');
+            $table->date('data_fim');
             $table->integer('taxa_id')->index('fk_taxa')->nullable();
             $table->integer('mensalista_id')->index('fk_mensalista');
             $table->timestamps();

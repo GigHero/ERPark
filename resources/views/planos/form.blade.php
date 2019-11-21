@@ -37,7 +37,7 @@
                 <div class="form-group">
                     <label for="nome">Mensalista</label>
                     <div class="input-group">
-                        <select class="custom-select" name="plano[mensalista_id]" id="form-control" aria-label="Example select with button addon">
+                        <select class="custom-select" name="plano[mensalista_id]" id="form-control" >
                         @foreach($data['mensalistas'] as $mensalista)
                         <option value="{{$mensalista->id}}">{{$mensalista->nome}}</option>
                         @endforeach

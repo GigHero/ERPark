@@ -16,9 +16,9 @@ class CreateMensalistaTable extends Migration
         Schema::create('mensalista', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->String('nome');
-            $table->String('email');
+            $table->String('email')->nullable();
             $table->String('cpf');
-            $table->String('telefone');
+            $table->String('telefone')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
