@@ -82,9 +82,13 @@ class PlanoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
+    {        
+        $atual = Carbon::now();
 
-        $planos = DB::table('plano')->where('mensalista_id', '=', $id)->get();
+        $planos = DB::table('plano')->where([
+            ['mensalista_id', '=', $id],
+            ['data_fim', '>', $atual],  
+        ])->get();
 
         $data = [
             'planos' => $planos

@@ -33,14 +33,16 @@
                     <label for="nome">Tipo De Taxa</label>
                     <div class="input-group">
                         <select class="custom-select" name="patio[taxa_id]" id="form-control">
-                        @foreach($data['taxas'] as $taxa)
                         <option value=" ">Selecionar Taxa</option>
+                        @foreach($data['taxas'] as $taxa)
                         <option value="{{$taxa->id}}">{{$taxa->nome}}</option>
                         @endforeach
                         </select>
                     </div>
                 </div>
+
                 
+
 
                 <input type="submit" value="{{$data['patio'] ? 'Atualizar' : 'Salvar'}}" class="btn btn-success">
             </form>

@@ -23,6 +23,17 @@ class Plano extends Model
         return $this->belongsTo('App\Taxas', 'taxa_id');
     }
 
+    public function getAtivos(){
+        
+        $atual = Carbon::now();
+        $data_fim = $this->data_fim;
+
+        if( $data_fim > $atual ){
+            return $data_fim;
+        }
+    }
+
+
    /* public function setFimAttribute($val) {
         $this->attributes['data_fim'] = implode('-', array_reverse(explode('/', explode(' ', $val)[0])));
     }
