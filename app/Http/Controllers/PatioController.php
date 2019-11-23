@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\{Patio, Taxas, Plano};
+use App\{Patio, Taxas, Plano, Mensalista};
 use App\Http\Requests\PatioRequest;
 use DB;
 use Carbon\Carbon;
@@ -34,7 +34,9 @@ class PatioController extends Controller
     public function create()
     {
         $taxas = Taxas::get();
+        $mensalistas = Mensalista::get();
         $data = [
+            'mensalistas' => $mensalistas,
             'taxas' => $taxas,
             'patio' => '',
             'url' => 'patio',

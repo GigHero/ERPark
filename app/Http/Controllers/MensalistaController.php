@@ -53,7 +53,7 @@ class MensalistaController extends Controller
                 'nome' => $request['mensalista']['nome'],
                 'email' => $request['mensalista']['email'],
                 'cpf' => $request['mensalista']['cpf'],
-                'telefone' => $request['mensalista']['telefone'],
+                'telefone' => $request['mensalista']['telefone']
 
             ]);
             DB::commit();

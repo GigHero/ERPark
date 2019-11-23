@@ -71,7 +71,7 @@ class PlanoController extends Controller
         }
         catch(\Exception $e) {
             DB::rollback();
-            return $e;
+            return redirect('patio')->with('error', 'Erro no servidor! Carro não cadastrado!');
         }
     }
 
@@ -90,11 +90,16 @@ class PlanoController extends Controller
             ['data_fim', '>', $atual],  
         ])->get();
 
-        $data = [
-            'planos' => $planos
-        ];
-  
-        return view('planos.show', compact('data'));
+        if($planos->isEmpty()){
+            
+        return redirect('planos')->with('error', 'Usuário sem planos cadastrados!');
+
+        }else{
+            $data = [
+                'planos' => $planos
+            ];
+            return view('planos.show', compact('data'));
+        }
 
     }
 
