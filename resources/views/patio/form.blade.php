@@ -30,10 +30,22 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="nome">Mensalista</label>
+                    <div class="input-group">
+                        <select class="custom-select" name="patio[mensalista_id]" id="form-control" >
+                        <option value=" ">Não Cadastrado</option>
+                        @foreach($data['mensalistas'] as $mensalista)
+                        <option value="{{$mensalista->id}}">{{$mensalista->nome}}</option>
+                        @endforeach
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
                     <label for="nome">Tipo De Taxa</label>
                     <div class="input-group">
                         <select class="custom-select" name="patio[taxa_id]" id="form-control">
-                        <option value=" ">Selecionar Taxa</option>
+                        <option value=" ">Para Cadastrados</option>
                         @foreach($data['taxas'] as $taxa)
                         <option value="{{$taxa->id}}">{{$taxa->nome}}</option>
                         @endforeach
@@ -41,16 +53,7 @@
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="nome">Mensalista</label>
-                    <div class="input-group">
-                        <select class="custom-select" name="plano[mensalista_id]" id="form-control" >
-                        @foreach($data['mensalistas'] as $mensalista)
-                        <option value="{{$mensalista->id}}">{{$mensalista->nome}}</option>
-                        @endforeach
-                        </select>
-                    </div>
-                </div>
+
 
 
                 <input type="submit" value="{{$data['patio'] ? 'Atualizar' : 'Salvar'}}" class="btn btn-success">

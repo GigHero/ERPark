@@ -60,7 +60,8 @@ class PatioController extends Controller
                 'placa' => $request['patio']['placa'],
                 'obs' => $request['patio']['obs'],
                 'vaga' => $request['patio']['vaga'],
-                'taxa_id' =>$request['patio']['taxa_id']
+                'taxa_id' =>$request['patio']['taxa_id'],
+                'mensalista_id' => $request['patio']['mensalista_id']
             ]);
             DB::commit();
             return redirect('patio')->with('success', 'Carro cadastrado com sucesso!');
@@ -79,7 +80,7 @@ class PatioController extends Controller
      */
     public function show($id)
     {
-        //
+    
     }
 
     /**
@@ -90,7 +91,7 @@ class PatioController extends Controller
      */
     public function edit($id)
     {
-        //
+    
     }
 
     /**

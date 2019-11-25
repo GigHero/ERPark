@@ -19,7 +19,7 @@
 
                 <div class="form-group">
                     <label for="CPF">CPF</label>
-                    <input type="text" name="mensalista[cpf]" class="form-control" placeholder="7x4.x46.x50-4x" value="{{old('mensalista.cpf', $data['mensalista'] ? $data['mensalista']->cpf : '')}}">
+                    <input type="text" name="mensalista[cpf]" class="form-control cpf" placeholder="7x4.x46.x50-4x" value="{{old('mensalista.cpf', $data['mensalista'] ? $data['mensalista']->cpf : '')}}">
                     <span>{{$errors->first('mensalista.cpf')}}</span>
                 </div>
 
@@ -31,7 +31,7 @@
 
                 <div class="form-group">
                     <label for="Telefone">Telefone</label>
-                    <input type="text" name="mensalista[telefone]" class="form-control" placeholder="12 99xxx- xx89" value="{{old('mensalista.telefone', $data['mensalista'] ? $data['mensalista']->telefone : '')}}">
+                    <input type="text" name="mensalista[telefone]" class="form-control tel" placeholder="(12)99xxx- xx89" value="{{old('mensalista.telefone', $data['mensalista'] ? $data['mensalista']->telefone : '')}}">
                     <span>{{$errors->first('mensalista.telefone')}}</span>
                 </div>
                 

@@ -17,5 +17,8 @@ class Mensalista extends Model
     public function planos(){
         return $this->hasOne('App\Plano');
     }    
+    public function patio(){
+        return $this->hasOne('App\Patio');
+    } 
 
 }

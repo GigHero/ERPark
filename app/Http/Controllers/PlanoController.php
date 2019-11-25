@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\{Mensalista, Plano, Taxas};
+    use App\{Mensalista, Plano, Taxas};
 use App\Http\Requests\MensalistaRequest;
 use DB;
 use Carbon\Carbon;
@@ -56,6 +56,7 @@ class PlanoController extends Controller
         
         $inicio = $request['plano']['data_ini'];
         $fim = $request['plano']['data_fim'];
+        
 
         try {
             

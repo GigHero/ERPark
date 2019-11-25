@@ -32,14 +32,17 @@ class Plano extends Model
             return $data_fim;
         }
     }
-
-
-   /* public function setFimAttribute($val) {
+    public function setFimAttribute($val) {
         $this->attributes['data_fim'] = implode('-', array_reverse(explode('/', explode(' ', $val)[0])));
     }
 
-    public function getFimAttribute($val) {
-        $horario = explode(' ', $val)[1];
-        return $this->attributes['fim'] = implode('/', array_reverse(explode('-', explode(' ', $val)[0]))).' '.$horario;
-    }('data_fim');*/
+    /*
+
+
+        public function getFimAttribute($val) {
+            $horario = explode(' ', $val)[1];
+            return $this->attributes['fim'] = implode('/', array_reverse(explode('-', explode(' ', $val)[0]))).' '.$horario;
+        }('data_fim');
+
+    */
 }

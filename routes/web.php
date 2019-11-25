@@ -48,3 +48,12 @@ Route::prefix('patio')->group(function() {
     Route::put('{id}', 'PatioController@update');
     Route::delete('{id}', 'PatioController@destroy');
 });
+
+Route::prefix('relatorios')->group(function() {
+    Route::get('/', 'RelatorioController@index');
+    Route::get('create', 'RelatorioController@create');
+    Route::post('/', 'RelatorioController@store');
+    Route::get('{id}/edit', 'RelatorioController@edit');
+    Route::put('{id}', 'RelatorioController@update');
+    Route::delete('{id}', 'RelatorioController@destroy');
+});
