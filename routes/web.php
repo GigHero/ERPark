@@ -49,6 +49,7 @@ Route::prefix('patio')->group(function() {
     Route::delete('{id}', 'PatioController@destroy');
 });
 
+
 Route::prefix('relatorios')->group(function() {
     Route::get('/', 'RelatorioController@index');
     Route::get('create', 'RelatorioController@create');

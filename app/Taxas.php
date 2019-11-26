@@ -17,7 +17,7 @@ class Taxas extends Model
     }
 
     public function taxaMensalista() {
-        return $this->hasOne('App\PLano');
+        return $this->hasOne('App\Plano');
     }
 
 

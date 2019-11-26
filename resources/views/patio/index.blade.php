@@ -3,10 +3,10 @@
 <div class="card">
     <div class="card-header">Patio</div>
         <div class="card-body">
-            <div class="row pb-3 pl-3 pr-3 d-flex">
+        <div class="row pb-3 pl-3 pr-3 d-flex">
                 <a class="mr-auto btn btn-success" href="{{url('patio/create')}}">Nova Entrada</a>
 
-                <a class="btn btn-success " href="{{url('relatorios/')}}">Relatorios</a>
+                <a class="btn btn-success " href="{{url('relatorios')}}">Relatorios</a>
             </div> 
             <div class="row">
                 <table class="table">
@@ -33,7 +33,7 @@
                                 <form action="{{url('patio/'.$carro->id)}}" method="POST">
                                     @method('PUT')
                                     @csrf
-                                    <input type="submit" class="btn btn-danger" value="Saida" {{ $carro->getValor() ? 'disabled' : ' ' }}/>
+                                    <input type="submit" class="btn btn-danger" value="Saida" {{ $carro->saida ? 'disabled' : ' ' }}/>
                                 </form>
                             </td>
                         </tr>

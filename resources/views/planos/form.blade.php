@@ -13,13 +13,13 @@
 
                 <div class="form-group">
                     <label for="nome">Data de Inicio</label>
-                    <input type="text" name="plano[data_ini]" class="form-control" placeholder="04/10/2019" value="{{old('plano.data_ini', $data['plano'] ? $data['plano']->data_ini : '')}}">
+                    <input type="date" name="plano[data_ini]" class="form-control" value="{{old('plano.data_ini', $data['plano'] ? $data['plano']->data_ini : '')}}">
                     <span>{{$errors->first('plano.data_ini')}}</span>
-                </div>
+                </div>  
 
                 <div class="form-group">
                     <label for="nome">Data de Fim</label>
-                    <input type="text" name="plano[data_fim]" class="form-control" placeholder="05/11/2019" value="{{old('plano.data_fim', $data['plano'] ? $data['plano']->data_fim : '')}}">
+                    <input type="date" name="plano[data_fim]" class="form-control" value="{{old('plano.data_fim', $data['plano'] ? $data['plano']->data_fim : '')}}">
                     <span>{{$errors->first('plano.data_fim')}}</span>
                 </div>
 

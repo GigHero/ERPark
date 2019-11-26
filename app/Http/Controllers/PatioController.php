@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\{Patio, Taxas, Plano, Mensalista};
+use App\{Taxas, Plano, Mensalista};
+use App\Patio;
 use App\Http\Requests\PatioRequest;
 use DB;
 use Carbon\Carbon;
