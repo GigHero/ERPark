@@ -51,9 +51,10 @@ Route::prefix('patio')->group(function() {
 
 
 Route::prefix('relatorios')->group(function() {
-    Route::get('/', 'RelatorioController@index');
+    Route::get('/index', 'RelatorioController@index');
     Route::get('create', 'RelatorioController@create');
-    Route::post('/', 'RelatorioController@store');
+    Route::get('/', 'RelatorioController@pesquisa');
+    Route::post('/pesquisa', 'RelatorioController@show');
     Route::get('{id}/edit', 'RelatorioController@edit');
     Route::put('{id}', 'RelatorioController@update');
     Route::delete('{id}', 'RelatorioController@destroy');

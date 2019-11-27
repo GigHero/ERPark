@@ -16,13 +16,7 @@ class RelatorioController extends Controller
      */
     public function index()
     {
-        $carros = Patio::get();
-        
-        $data = [
-            'carros' => $carros
-        ];
-    
-        return view('relatorios.index', compact('data'));
+
     }
 
     /**
@@ -30,9 +24,15 @@ class RelatorioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function pesquisa()
     {
-        //
+        $data = [
+            'relatorio' => '',
+            'url' => 'relatorios/pesquisa',
+            'method' => 'POST'
+        ];
+
+        return view('relatorios.form', compact('data'));
     }
 
     /**
@@ -52,9 +52,19 @@ class RelatorioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request)
     {
-        //
+        $data_ini = date('Y-m-d H:i:s',strtotime($request['relatorio']['data_ini']));
+        $data_fim = date('Y-m-d H:i:s',strtotime($request['relatorio']['data_fim']));
+      
+        $pesquisas = Patio::where('entrada', '>=', $data_ini)
+                    ->where('saida', '<', $data_fim)
+                    ->get();         
+        $data = [
+            'pesquisas' => $pesquisas,
+        ];
+
+        return view('relatorios.relatorio', compact('data'));
     }
 
     /**

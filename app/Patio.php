@@ -16,14 +16,18 @@ class Patio extends Model
     public function taxa() {
         return $this->belongsTo('App\Taxas');
     }
+    
     public function getValor(){
         
         $saida = $this->saida;
-       if($saida != null && $this->taxa_id != null){
-            $entrada = $this->entrada;
+        if($saida != null && $this->taxa_id != null){
+            
+        $entrada = $this->entrada;
             $valor = $saida->diffInMinutes($entrada);
-            return $valor/60 * $this->taxa->valor;
-       }
+            $valor = $valor/60 * $this->taxa->valor;
+            return 'R$ '.number_format($valor, 2, ',', '');
+
+        }
         if($saida != null && $this->mensalista_id != null){
             return 'Mensalista';
         }

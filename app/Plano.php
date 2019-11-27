@@ -23,13 +23,4 @@ class Plano extends Model
         return $this->belongsTo('App\Taxas', 'taxa_id');
     }
 
-    public function getAtivos(){
-        
-        $atual = Carbon::now();
-        $data_fim = $this->data_fim;
-
-        if( $data_fim > $atual ){
-            return $data_fim;
-        }
-    }
 }
