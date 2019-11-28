@@ -6,7 +6,7 @@
         <div class="row pb-3 pl-3 pr-3 d-flex">
                 <a class="mr-auto btn btn-success" href="{{url('patio/create')}}">Nova Entrada</a>
 
-                <a class="btn btn-success " href="{{url('relatorios')}}">Relatorios</a>
+                <a class="btn btn-success" href="{{url('relatorios')}}">Relatorios</a>
             </div> 
             <div class="row">
                 <table class="table">

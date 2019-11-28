@@ -3,7 +3,6 @@
 <div class="card" id="print">
     <div class="card-header">Mensalista</div>
         <div class="card-body">
-        
             <table class="table">
                 <thead>
                     <tr>
@@ -14,18 +13,13 @@
                 </thead>
                 <tbody>
                     @foreach($data['pesquisas'] as $pesquisa)
-                    <tr>
-                        <td>{{$pesquisa->entrada}}</td>
-                        <td>{{$pesquisa->saida}}</td>
-
-                        <td>
-                        
-                        {{ $pesquisa->getValor() }}
-                        
-                        
-                        
-                        </td>
-                    </tr>
+                        <tr>
+                            <td>{{$pesquisa->entrada}}</td>
+                            <td>{{$pesquisa->saida}}</td>
+                            <td>
+                            {{$pesquisa->getValor()}}
+                            </td>
+                        </tr>
                     @endforeach
                 </tbody>
             </table>

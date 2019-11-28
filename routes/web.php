@@ -11,6 +11,7 @@
 |
 */
 
+Route::get('/', 'HomeController@index');
 
 Route::prefix('taxas')->group(function() {
     Route::get('/', 'TaxasController@index');

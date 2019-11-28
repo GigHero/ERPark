@@ -7,6 +7,7 @@
     <title>ErPark</title>
 
     <!-- STYLES -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
@@ -19,26 +20,27 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Alterna navegação">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand d-flex align-items-center" href="#">
-            <a href="{{url('/')}}" class="ml-2"><b>ErPark</b></a>
+        <a class="navbar-brand d-flex align-items-center ml-4" href="{{url('/')}}">
+            <b>ErPark</b>
         </a>
 
-        <div class="collapse navbar-collapse" id="navbarToggler">
+        <div class="collapse navbar-collapse mr-4" id="navbarToggler">
             <ul class="navbar-nav mt-2 mt-lg-0 ml-auto">
             <li class="nav-item">
-                <a class="nav-link" href="{{url('patio')}}">Entrada de Carros</a>
+                <a class="nav-link" href="{{url('patio')}}">Entrada</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{url('planos')}}">Planos</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{url('taxas')}}">Taxas</a>
+                <a class="nav-link" href="{{url('mensalistas')}}">Mensalista</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{url('mensalistas')}}">Mensalista</a>
+                <a class="nav-link" href="{{url('taxas')}}">Taxas</a>
             </li>
         </div>
     </nav>
+    
 
     <div class="row">
         @if (Session::has('success'))
@@ -90,8 +92,8 @@
         }
         //mascaras
         $('.data').mask('99/99/9999');
-        $('.cpf').mask('999.999.999-99')
-        $('.tel').mask('(99)99999-9999')
+        $('.cpf').mask('999.999.999-99');
+        $('.tel').mask('(99)99999-9999');
     </script>
     @yield('scripts')
 </body>

@@ -57,7 +57,6 @@ class PlanoController extends Controller
         $inicio = $request['plano']['data_ini'];
         $fim = $request['plano']['data_fim'];
         
-
         try {
             
             $plano = Plano::create([
@@ -84,12 +83,9 @@ class PlanoController extends Controller
      */
     public function show($id)
     {        
-        $atual = Carbon::now();
 
-        $planos = DB::table('plano')->where([
-            ['mensalista_id', '=', $id],
-            ['data_fim', '>', $atual],  
-        ])->get();
+        $planos = Plano::where('mensalista_id', '=', $id)
+                    ->get();
 
         if($planos->isEmpty()){
             
