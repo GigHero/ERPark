@@ -13,25 +13,25 @@
 
                 <div class="form-group">
                     <label for="nome">Nome</label>
-                    <input type="text" name="mensalista[nome]" class="form-control" placeholder="Rogério" value="{{old('mensalista.nome', $data['mensalista'] ? $data['mensalista']->nome : '')}}">
+                    <input type="text" name="mensalista[nome]" class="form-control" placeholder="Rogério" value="{{old('mensalista.nome', $data['mensalista'] ? $data['mensalista']->nome : '')}}" required>
                     <span>{{$errors->first('mensalista.nome')}}</span>
                 </div>
 
                 <div class="form-group">
                     <label for="CPF">CPF</label>
-                    <input type="text" name="mensalista[cpf]" class="form-control cpf" placeholder="7x4.x46.x50-4x" value="{{old('mensalista.cpf', $data['mensalista'] ? $data['mensalista']->cpf : '')}}">
+                    <input type="text" name="mensalista[cpf]" class="form-control cpf" placeholder="7x4.x46.x50-4x" value="{{old('mensalista.cpf', $data['mensalista'] ? $data['mensalista']->cpf : '')}}" required>
                     <span>{{$errors->first('mensalista.cpf')}}</span>
                 </div>
 
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" name="mensalista[email]" class="form-control" placeholder="name@example.com" value="{{old('mensalista.email', $data['mensalista'] ? $data['mensalista']->email : '')}}">
+                    <input type="email" name="mensalista[email]" class="form-control" placeholder="name@example.com" value="{{old('mensalista.email', $data['mensalista'] ? $data['mensalista']->email : '')}}" required>
                     <span>{{$errors->first('mensalista.email')}}</span>
                 </div>
 
                 <div class="form-group">
                     <label for="Telefone">Telefone</label>
-                    <input type="text" name="mensalista[telefone]" class="form-control tel" placeholder="(12)99xxx- xx89" value="{{old('mensalista.telefone', $data['mensalista'] ? $data['mensalista']->telefone : '')}}">
+                    <input type="text" name="mensalista[telefone]" class="form-control tel" placeholder="(12)99xxx- xx89" value="{{old('mensalista.telefone', $data['mensalista'] ? $data['mensalista']->telefone : '')}}" required>
                     <span>{{$errors->first('mensalista.telefone')}}</span>
                 </div>
                 

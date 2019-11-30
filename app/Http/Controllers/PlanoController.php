@@ -65,13 +65,13 @@ class PlanoController extends Controller
                 'taxa_id' => $request['plano']['taxa_id'],
                 'mensalista_id' => $request['plano']['mensalista_id']
             ]);
-
+            
             DB::commit();
             return redirect('planos')->with('success', 'Planos cadastrado com sucesso!');
         }
         catch(\Exception $e) {
             DB::rollback();
-            return redirect('patio')->with('error', 'Erro no servidor! Carro não cadastrado!');
+            return redirect('planos')->with('error', 'Erro no servidor! Plano não cadastrado!');
         }
     }
 

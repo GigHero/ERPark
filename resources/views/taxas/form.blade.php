@@ -12,7 +12,7 @@
                 @csrf
                 <div class="form-group">
                     <label for="Nome">Nome</label>
-                    <input type="text" name="taxa[nome]" class="form-control" value="{{old('taxa.nome', $data['taxa'] ? $data['taxa']->nome : '')}}">
+                    <input type="text" name="taxa[nome]" class="form-control" value="{{old('taxa.nome', $data['taxa'] ? $data['taxa']->nome : '')}}" required>
                     <span>{{$errors->first('taxa.nome')}}</span>
                 </div>
                 <div class="form-group">
@@ -21,7 +21,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">$</span>
                         </div>
-                        <input type="text" name="taxa[valor]"class="form-control" value="{{old('taxa.valor', $data['taxa'] ? $data['taxa']->valor : '')}}">
+                        <input type="text" name="taxa[valor]"class="form-control" value="{{old('taxa.valor', $data['taxa'] ? $data['taxa']->valor : '')}}" required>
                         <span>{{$errors->first('taxa.valor')}}</span>
                     </div>
                 </div>

@@ -13,19 +13,19 @@
 
                 <div class="form-group">
                     <label for="nome">Placa</label>
-                    <input type="text" name="patio[placa]" class="form-control" value="{{old('patio.placa', $data['patio'] ? $data['patio']->placa : '')}}">
+                    <input type="text" name="patio[placa]" class="form-control placa" value="{{old('patio.placa', $data['patio'] ? $data['patio']->placa : '')}}" required>
                     <span>{{$errors->first('patio.placa')}}</span>
                 </div>
 
                 <div class="form-group">
                     <label for="nome">Observação</label>
-                    <input type="text" name="patio[obs]" class="form-control" placeholder="Avaria na traseira" value="{{old('patio.obs', $data['patio'] ? $data['patio']->obs : '')}}">
+                    <input type="text" name="patio[obs]" class="form-control" placeholder="Avaria na traseira" value="{{old('patio.obs', $data['patio'] ? $data['patio']->obs : '')}}" required>
                     <span>{{$errors->first('patio.obs')}}</span>
                 </div>  
 
                 <div class="form-group">
                     <label for="nome">Vaga</label>
-                    <input type="text" name="patio[vaga]" class="form-control" placeholder="F12" value="{{old('patio.vaga', $data['patio'] ? $data['patio']->vaga : '')}}">
+                    <input type="text" name="patio[vaga]" class="form-control" placeholder="F12" value="{{old('patio.vaga', $data['patio'] ? $data['patio']->vaga : '')}}" required>
                     <span>{{$errors->first('patio.vaga')}}</span>
                 </div>
 
